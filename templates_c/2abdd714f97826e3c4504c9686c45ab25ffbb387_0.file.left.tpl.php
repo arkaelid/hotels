@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-11-13 15:50:37
+/* Smarty version 4.3.4, created on 2024-11-13 16:08:10
   from 'C:\wamp64\www\hotels\public\left.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_6734cacdc34355_61186222',
+  'unifunc' => 'content_6734ceeaa37bd2_82586867',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2abdd714f97826e3c4504c9686c45ab25ffbb387' => 
     array (
       0 => 'C:\\wamp64\\www\\hotels\\public\\left.tpl',
-      1 => 1731512970,
+      1 => 1731513873,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6734cacdc34355_61186222 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6734ceeaa37bd2_82586867 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Left Panel -->
 
     <aside id="left-panel" class="left-panel">
@@ -61,16 +61,13 @@ function content_6734cacdc34355_61186222 (Smarty_Internal_Template $_smarty_tpl)
     </a>
 </li>
 
-                    <h3 class="menu-title">xxxxx</h3><!-- /.menu-title -->
+                    <h3 class="menu-title">Calendrier</h3><!-- /.menu-title -->
 
-                    <li class="dropdown">
-                        <a href="#A VOUS D'ECRIRE LE LIEN"> <i class="menu-icon fa fa-tasks"></i>xxxxx</a>
-                         
-                        
-                    </li>
-                    <li>
-                        <a href="#"> <i class="menu-icon ti-email"></i>xxxxxx</a>
-                    </li>
+                    <li class="menu-item">
+    <a href="index.php?gestion=calendrier" class="dropdown-toggle"> 
+        <i class="menu-icon fa fa-calendar"></i>Calendrier des réservations
+    </a>
+</li>
                    
                 </ul>
             </div><!-- /.navbar-collapse -->

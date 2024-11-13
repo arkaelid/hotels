@@ -31,6 +31,10 @@ class Autoloader
             'mod_connexion/controleur/',
             'mod_connexion/modele/',
             'mod_connexion/vue/',
+            'mod_calendrier/',
+            'mod_calendrier/controleur/',
+            'mod_calendrier/modele/',
+            'mod_calendrier/vue/',
         );
 
         // Recherche dans chaque répertoire

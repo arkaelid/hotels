@@ -675,6 +675,7 @@ class Smarty extends Smarty_Internal_TemplateBase
         if (Smarty::$_CHARSET !== 'UTF-8') {
             Smarty::$_UTF8_MODIFIER = '';
         }
+        $this->registerPlugin('modifier', 'trim', 'trim');
     }
 
     /**
