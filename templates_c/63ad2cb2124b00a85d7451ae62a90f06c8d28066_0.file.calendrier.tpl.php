@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-11-13 17:49:32
+/* Smarty version 4.3.4, created on 2024-11-13 18:59:15
   from 'C:\wamp64\www\hotels\mod_calendrier\vue\calendrier.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_6734e6ac176301_31452177',
+  'unifunc' => 'content_6734f703e1a293_69638352',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'f094cbec2f49f454bad4bd122daca976a3261db4' => 
+    '63ad2cb2124b00a85d7451ae62a90f06c8d28066' => 
     array (
       0 => 'C:\\wamp64\\www\\hotels\\mod_calendrier\\vue\\calendrier.tpl',
-      1 => 1731520166,
+      1 => 1731524351,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:public/header.tpl' => 1,
   ),
 ),false)) {
-function content_6734e6ac176301_31452177 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6734f703e1a293_69638352 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\wamp64\\www\\hotels\\include\\libs\\plugins\\modifier.date_format.php','function'=>'smarty_modifier_date_format',),));
 ?>
 <!doctype html>
@@ -123,7 +123,7 @@ $_smarty_tpl->tpl_vars['an']->first = $_smarty_tpl->tpl_vars['an']->iteration ==
                             </div>
                             <?php if ((isset($_SESSION['client'])) && (isset($_smarty_tpl->tpl_vars['hotel_info']->value))) {?>
                                 <div class="col-md-8">
-                                    <span class="badge badge-primary">
+                                    <span style="font-size: 21px; font-weight: bold;" class="badge badge-primary">
                                         Hôtel réservé : <?php echo $_smarty_tpl->tpl_vars['hotel_info']->value['Name'];?>
  
                                         <span class="hotel-stars">
@@ -134,7 +134,7 @@ $_smarty_tpl->tpl_vars['__smarty_section_star'] = new Smarty_Variable(array());
 if ($__section_star_0_total !== 0) {
 for ($__section_star_0_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_star']->value['index'] = 0; $__section_star_0_iteration <= $__section_star_0_total; $__section_star_0_iteration++, $_smarty_tpl->tpl_vars['__smarty_section_star']->value['index']++){
 ?>
-                                                <i class="fa fa-star"></i>
+                                                <i style="color: gold;" class="fa fa-star"></i>
                                             <?php
 }
 }
@@ -159,94 +159,89 @@ for ($__section_star_0_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_s
 
                             </div>
                             
-                            <table class="table table-bordered calendar">
-                                <thead>
-                                    <tr>
-                                        <th>Dimanche</th>
-                                        <th>Lundi</th>
-                                        <th>Mardi</th>
-                                        <th>Mercredi</th>
-                                        <th>Jeudi</th>
-                                        <th>Vendredi</th>
-                                        <th>Samedi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                                                                <?php
-$__section_foo_1_loop = (is_array(@$_loop=$_smarty_tpl->tpl_vars['jour_semaine']->value) ? count($_loop) : max(0, (int) $_loop));
-$__section_foo_1_total = $__section_foo_1_loop;
-$_smarty_tpl->tpl_vars['__smarty_section_foo'] = new Smarty_Variable(array());
-if ($__section_foo_1_total !== 0) {
-for ($__section_foo_1_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_foo']->value['index'] = 0; $__section_foo_1_iteration <= $__section_foo_1_total; $__section_foo_1_iteration++, $_smarty_tpl->tpl_vars['__smarty_section_foo']->value['index']++){
-?>
-                                            <td class="empty-day"></td>
-                                        <?php
+                                                        
+                            
+                            <table class="calendar">
+    <thead>
+        <tr>
+            <th>Dimanche</th>
+            <th>Lundi</th>
+            <th>Mardi</th>
+            <th>Mercredi</th>
+            <th>Jeudi</th>
+            <th>Vendredi</th>
+            <th>Samedi</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+                <?php $_smarty_tpl->_assignInScope('premier_jour', smarty_modifier_date_format($_smarty_tpl->tpl_vars['date_debut']->value,"%w"));?>
+        <?php
+$_smarty_tpl->tpl_vars['i'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? $_smarty_tpl->tpl_vars['premier_jour']->value-1+1 - (0) : 0-($_smarty_tpl->tpl_vars['premier_jour']->value-1)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
+if ($_smarty_tpl->tpl_vars['i']->total > 0) {
+for ($_smarty_tpl->tpl_vars['i']->value = 0, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
+$_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration === $_smarty_tpl->tpl_vars['i']->total;?>
+            <td class="empty">&nbsp;</td>
+        <?php }
 }
-}
 ?>
-                                        
-                                                                                <?php $_smarty_tpl->_assignInScope('jour_courant', 1);?>
-                                        <?php
- while ($_smarty_tpl->tpl_vars['jour_courant']->value <= $_smarty_tpl->tpl_vars['nombre_jours']->value) {?>
-                                            <?php if (($_smarty_tpl->tpl_vars['jour_semaine']->value+$_smarty_tpl->tpl_vars['jour_courant']->value-1)%7 == 0) {?></tr><tr><?php }?>
-                                            
-                                            <td>
-                                                <div class="date"><?php echo $_smarty_tpl->tpl_vars['jour_courant']->value;?>
-</div>
-                                                <?php $_smarty_tpl->_assignInScope('date_complete', ((string)$_smarty_tpl->tpl_vars['annee']->value)."-".((string)(sprintf("%02d",$_smarty_tpl->tpl_vars['mois']->value)))."-".((string)(sprintf("%02d",$_smarty_tpl->tpl_vars['jour_courant']->value))));?>
-                                                
-                                                <?php if ((isset($_smarty_tpl->tpl_vars['reservations_par_date']->value[$_smarty_tpl->tpl_vars['date_complete']->value]))) {?>
-                                                    <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['reservations_groupees']->value, 'reservation');
+        
+                <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, range(1,$_smarty_tpl->tpl_vars['nombre_jours']->value), 'jour');
+$_smarty_tpl->tpl_vars['jour']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['jour']->value) {
+$_smarty_tpl->tpl_vars['jour']->do_else = false;
+?>
+            <?php if (($_smarty_tpl->tpl_vars['premier_jour']->value+$_smarty_tpl->tpl_vars['jour']->value-1)%7 == 0 && $_smarty_tpl->tpl_vars['jour']->value != 1) {?>
+                </tr><tr>
+            <?php }?>
+            <td class="day">
+                <?php echo $_smarty_tpl->tpl_vars['jour']->value;?>
+
+                <?php $_smarty_tpl->_assignInScope('reservation_affichee', false);?>
+                <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['reservations_uniques']->value, 'reservation');
 $_smarty_tpl->tpl_vars['reservation']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['reservation']->value) {
 $_smarty_tpl->tpl_vars['reservation']->do_else = false;
 ?>
-                                                                                                                <?php if ($_smarty_tpl->tpl_vars['date']->value == $_smarty_tpl->tpl_vars['reservation']->value['debut']) {?>
-                                                                                                                        <?php $_smarty_tpl->_assignInScope('nb_jours', floor(((strtotime($_smarty_tpl->tpl_vars['reservation']->value['fin'])-strtotime($_smarty_tpl->tpl_vars['reservation']->value['debut']))/86400+1)));?>
-                                                            
-                                                            <td class="has-reservation" colspan="<?php echo $_smarty_tpl->tpl_vars['nb_jours']->value;?>
-">
-                                                                <div class="reservation-info">
-                                                                    <span class="client-name"><?php echo $_smarty_tpl->tpl_vars['reservation']->value['LastName'];?>
+                    <?php if (in_array($_smarty_tpl->tpl_vars['jour']->value,$_smarty_tpl->tpl_vars['reservation']->value['jours'])) {?>
+                        <?php if (!$_smarty_tpl->tpl_vars['reservation_affichee']->value) {?>
+                            <div class="reservation-info 
+                                <?php if ($_smarty_tpl->tpl_vars['jour']->value == reset($_smarty_tpl->tpl_vars['reservation']->value['jours'])) {?>debut<?php }?>
+                                <?php if ($_smarty_tpl->tpl_vars['jour']->value == end($_smarty_tpl->tpl_vars['reservation']->value['jours'])) {?>fin<?php }?>
+                                <?php if ($_smarty_tpl->tpl_vars['jour']->value != reset($_smarty_tpl->tpl_vars['reservation']->value['jours']) && $_smarty_tpl->tpl_vars['jour']->value != end($_smarty_tpl->tpl_vars['reservation']->value['jours'])) {?>continuation<?php }?>">
+                                <?php echo $_smarty_tpl->tpl_vars['reservation']->value['LastName'];?>
  <?php echo $_smarty_tpl->tpl_vars['reservation']->value['FirstName'];?>
-</span>
-                                                                    <span class="room-number">Ch.<?php echo $_smarty_tpl->tpl_vars['reservation']->value['Room'];?>
-</span>
-                                                                    <span class="dates"><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['reservation']->value['debut'],"%d/%m");?>
- - <?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['reservation']->value['fin'],"%d/%m");?>
-</span>
-                                                                </div>
-                                                            </td>
-                                                            
-                                                                                                                        <?php $_smarty_tpl->_assignInScope('i', $_smarty_tpl->tpl_vars['i']->value+$_smarty_tpl->tpl_vars['nb_jours']->value-1);?>
-                                                        <?php }?>
-                                                    <?php
+ - Ch.<?php echo $_smarty_tpl->tpl_vars['reservation']->value['Room'];?>
+
+                            </div>
+                            <?php $_smarty_tpl->_assignInScope('reservation_affichee', true);?>
+                        <?php }?>
+                    <?php }?>
+                <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-                                                <?php }?>
-                                            </td>
-                                            
-                                            <?php $_smarty_tpl->_assignInScope('jour_courant', $_smarty_tpl->tpl_vars['jour_courant']->value+1);?>
-                                        <?php }?>
-
-                                        
-                                                                                <?php
-$__section_foo_2_loop = (is_array(@$_loop=(7-($_smarty_tpl->tpl_vars['jour_semaine']->value+$_smarty_tpl->tpl_vars['nombre_jours']->value-1)%7)%7) ? count($_loop) : max(0, (int) $_loop));
-$__section_foo_2_total = $__section_foo_2_loop;
-$_smarty_tpl->tpl_vars['__smarty_section_foo'] = new Smarty_Variable(array());
-if ($__section_foo_2_total !== 0) {
-for ($__section_foo_2_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_foo']->value['index'] = 0; $__section_foo_2_iteration <= $__section_foo_2_total; $__section_foo_2_iteration++, $_smarty_tpl->tpl_vars['__smarty_section_foo']->value['index']++){
-?>
-                                            <td class="empty-day"></td>
-                                        <?php
+            </td>
+        <?php
 }
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+        
+                <?php $_smarty_tpl->_assignInScope('dernier_jour', ($_smarty_tpl->tpl_vars['premier_jour']->value+$_smarty_tpl->tpl_vars['nombre_jours']->value-1)%7);?>
+        <?php if ($_smarty_tpl->tpl_vars['dernier_jour']->value < 6) {?>
+            <?php
+$_smarty_tpl->tpl_vars['i'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? 6+1 - ($_smarty_tpl->tpl_vars['dernier_jour']->value+1) : $_smarty_tpl->tpl_vars['dernier_jour']->value+1-(6)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
+if ($_smarty_tpl->tpl_vars['i']->total > 0) {
+for ($_smarty_tpl->tpl_vars['i']->value = $_smarty_tpl->tpl_vars['dernier_jour']->value+1, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
+$_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration === $_smarty_tpl->tpl_vars['i']->total;?>
+                <td class="empty">&nbsp;</td>
+            <?php }
 }
 ?>
-                                    </tr>
-                                </tbody>
-                            </table>
+        <?php }?>
+        </tr>
+    </tbody>
+</table>
                         <?php } else { ?>
                             <div class="alert alert-warning">
                                 Veuillez vous connecter pour voir vos réservations.
@@ -260,144 +255,95 @@ for ($__section_foo_2_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_fo
 </div>
 
 <style>
-.has-reservation {
-    background-color: #e3f2fd;
-    border: 1px solid #90caf9;
-    padding: 4px;
+.hotel-info {
+    margin-bottom: 20px;
+    text-align: center;
 }
 
+.hotel-info h2 {
+    color: #333;
+    font-size: 24px;
+}
 .reservation-info {
-    font-size: 12px;
-    line-height: 1.2;
-}
-
-.client-name {
-    font-weight: bold;
-    display: block;
-}
-
-.room-number {
-    color: #666;
-    margin-right: 8px;
-}
-
-.dates {
+    background-color: #e3f2fd;
+    margin: 2px 0;
+    padding: 2px;
     font-size: 11px;
-    color: #444;
-}
-
-/* Style au survol */
-.has-reservation:hover {
-    background-color: #bbdefb;
-    cursor: pointer;
-}
-
-/* Pour gérer les longs noms */
-.reservation-info {
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-/* Afficher le contenu complet au survol */
-.reservation-info:hover {
-    white-space: normal;
-    overflow: visible;
-    position: relative;
-    z-index: 100;
-}
-.reservation-cell {
-    background-color: #f0f8ff; /* Couleur de fond légère */
-    border: 1px solid #ccc;
-    padding: 5px;
-}
-
-.reservation {
-    font-size: 0.9em;
-    line-height: 1.2;
-}
-
-/* Pour gérer le débordement du texte */
-.reservation-cell {
-    max-width: 200px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-/* Pour afficher le contenu complet au survol */
-.reservation-cell:hover {
-    overflow: visible;
-    white-space: normal;
-    z-index: 1;
-    position: relative;
-}
-.form-inline select {
-    width: auto;
-}
-
-.form-inline {
-    align-items: center;
-}
-
-.hotel-stars {
-    color: #ffd700;
-    margin-left: 5px;
-}
-
-.badge {
-    font-size: 14px;
-    padding: 8px 12px;
-}
-.hotel-stars {
-    color: #ffd700;  /* Couleur dorée pour les étoiles */
-}
-
-.calendar td {
-    height: 120px;
-    width: 14.28%;
-    vertical-align: top;
-    padding: 5px;
-}
-
-.calendar .date {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.calendar .reservation {
-    font-size: 12px;
-    background: #e9ecef;
-    margin-bottom: 2px;
-    padding: 4px;
     border-radius: 3px;
-    border-left: 3px solid #007bff;
+    min-height: 20px; /* Pour maintenir une hauteur constante même sans texte */
 }
 
-.calendar .reservation.debut {
-    background: #d4edda;
-    border-left: 3px solid #28a745;
+.reservation-info.debut {
+    border-left: 3px solid #4CAF50;
 }
 
-.calendar .reservation.fin {
-    background: #f8d7da;
-    border-left: 3px solid #dc3545;
+.reservation-info.fin {
+    border-right: 3px solid #f44336;
 }
-
-.empty-day {
-    background: #f8f9fa;
-}
-
-.badge {
-    font-size: 10px;
-}
-
-.has-reservation {
+.reservation-info.continuation {
+    border-left: none;
+    border-right: none;
     background-color: #e3f2fd;
-    border: 1px solid #90caf9;
+}
+.day {
+    position: relative;
+    min-height: 40px;
+}
+
+
+
+.calendar {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.calendar th, .calendar td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.calendar th {
+    background-color: #f5f5f5;
+}
+
+.day {
+    height: 80px;
+    vertical-align: top;
+}
+
+.empty {
+    background-color: #f9f9f9;
+}
+
+.reserved {
+    background-color: #e3f2fd;
+}
+
+.reservation-info {
+    font-size: 12px;
+    color: #2196F3;
+    margin-top: 5px;
+    padding: 2px;
+    background-color: rgba(33, 150, 243, 0.1);
+    border-radius: 3px;
+}
+
+.controls {
+    margin-bottom: 20px;
+}
+
+.controls select {
+    margin-right: 10px;
+}
+
+.hotel-info {
+    margin-bottom: 20px;
+    text-align: center;
 }
 </style>
+
     <!-- FIN : header -->
 
     <!--<div class="breadcrumbs">

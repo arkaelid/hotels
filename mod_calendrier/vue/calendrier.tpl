@@ -74,11 +74,11 @@
                             </div>
                             {if isset($smarty.session.client) && isset($hotel_info)}
                                 <div class="col-md-8">
-                                    <span class="badge badge-primary">
+                                    <span style="font-size: 21px; font-weight: bold;" class="badge badge-primary">
                                         Hôtel réservé : {$hotel_info.Name} 
                                         <span class="hotel-stars">
                                             {section name=star loop=$hotel_info.Stars|strlen}
-                                                <i class="fa fa-star"></i>
+                                                <i style="color: gold;" class="fa fa-star"></i>
                                             {/section}
                                         </span>
                                     </span>
@@ -96,58 +96,63 @@
                                 Nombre de réservations trouvées : {$total_reservations}
                             </div>
                             
-                            <table class="table table-bordered calendar">
-                                <thead>
-                                    <tr>
-                                        <th>Dimanche</th>
-                                        <th>Lundi</th>
-                                        <th>Mardi</th>
-                                        <th>Mercredi</th>
-                                        <th>Jeudi</th>
-                                        <th>Vendredi</th>
-                                        <th>Samedi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        {* Remplir les jours vides du début du mois *}
-                                        {section name=foo loop=$jour_semaine}
-                                            <td class="empty-day"></td>
-                                        {/section}
-                                        
-                                        {* Boucle sur tous les jours du mois *}
-                                        {assign var=jour_courant value=1}
-                                        {while $jour_courant <= $nombre_jours}
-                                            {if ($jour_semaine + $jour_courant - 1) % 7 == 0}</tr><tr>{/if}
-                                            
-                                            <td>
-                                                <div class="date">{$jour_courant}</div>
-                                                {assign var=date_complete value="`$annee`-`$mois|string_format:"%02d"`-`$jour_courant|string_format:"%02d"`"}
-                                                
-                                                {if isset($reservations_par_date[$date_complete])}
-                                                    {foreach from=$reservations_par_date[$date_complete] item=reservation}
-                                                        <div class="reservation">
-                                                            {if isset($reservation.LastName)}
-                                                                {$reservation.LastName|trim}
-                                                            {/if}
-                                                            {if isset($reservation.Room)}
-                                                                Chambre {$reservation.Room}
-                                                            {/if}
-                                                        </div>
-                                                    {/foreach}
-                                                {/if}
-                                            </td>
-                                            
-                                            {assign var=jour_courant value=$jour_courant+1}
-                                        {/while}
-                                        
-                                        {* Remplir les jours vides de fin de mois *}
-                                        {section name=foo loop=(7 - ($jour_semaine + $nombre_jours - 1) % 7) % 7}
-                                            <td class="empty-day"></td>
-                                        {/section}
-                                    </tr>
-                                </tbody>
-                            </table>
+                            {* Affichage des informations de l'hôtel *}
+                            
+                            
+                            <table class="calendar">
+    <thead>
+        <tr>
+            <th>Dimanche</th>
+            <th>Lundi</th>
+            <th>Mardi</th>
+            <th>Mercredi</th>
+            <th>Jeudi</th>
+            <th>Vendredi</th>
+            <th>Samedi</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        {* Ajout des cellules du mois précédent *}
+        {assign var=premier_jour value=$date_debut|date_format:"%w"}
+        {for $i=0 to $premier_jour-1}
+            <td class="empty">&nbsp;</td>
+        {/for}
+        
+        {* Affichage des jours du mois *}
+        {foreach from=1|range:$nombre_jours item=jour}
+            {if ($premier_jour + $jour - 1) % 7 == 0 && $jour != 1}
+                </tr><tr>
+            {/if}
+            <td class="day">
+                {$jour}
+                {assign var=reservation_affichee value=false}
+                {foreach from=$reservations_uniques item=reservation}
+                    {if $jour|in_array:$reservation.jours}
+                        {if !$reservation_affichee}
+                            <div class="reservation-info 
+                                {if $jour == $reservation.jours|@reset}debut{/if}
+                                {if $jour == $reservation.jours|@end}fin{/if}
+                                {if $jour != $reservation.jours|@reset && $jour != $reservation.jours|@end}continuation{/if}">
+                                {$reservation.LastName} {$reservation.FirstName} - Ch.{$reservation.Room}
+                            </div>
+                            {assign var=reservation_affichee value=true}
+                        {/if}
+                    {/if}
+                {/foreach}
+            </td>
+        {/foreach}
+        
+        {* Compléter la dernière semaine *}
+        {assign var=dernier_jour value=($premier_jour + $nombre_jours - 1) % 7}
+        {if $dernier_jour < 6}
+            {for $i=$dernier_jour+1 to 6}
+                <td class="empty">&nbsp;</td>
+            {/for}
+        {/if}
+        </tr>
+    </tbody>
+</table>
                         {else}
                             <div class="alert alert-warning">
                                 Veuillez vous connecter pour voir vos réservations.
@@ -161,66 +166,95 @@
 </div>
 
 <style>
-.form-inline select {
-    width: auto;
+.hotel-info {
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-.form-inline {
-    align-items: center;
+.hotel-info h2 {
+    color: #333;
+    font-size: 24px;
 }
-
-.hotel-stars {
-    color: #ffd700;
-    margin-left: 5px;
-}
-
-.badge {
-    font-size: 14px;
-    padding: 8px 12px;
-}
-.hotel-stars {
-    color: #ffd700;  /* Couleur dorée pour les étoiles */
-}
-
-.calendar td {
-    height: 120px;
-    width: 14.28%;
-    vertical-align: top;
-    padding: 5px;
-}
-
-.calendar .date {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.calendar .reservation {
-    font-size: 12px;
-    background: #e9ecef;
-    margin-bottom: 2px;
-    padding: 4px;
+.reservation-info {
+    background-color: #e3f2fd;
+    margin: 2px 0;
+    padding: 2px;
+    font-size: 11px;
     border-radius: 3px;
-    border-left: 3px solid #007bff;
+    min-height: 20px; /* Pour maintenir une hauteur constante même sans texte */
 }
 
-.calendar .reservation.debut {
-    background: #d4edda;
-    border-left: 3px solid #28a745;
+.reservation-info.debut {
+    border-left: 3px solid #4CAF50;
 }
 
-.calendar .reservation.fin {
-    background: #f8d7da;
-    border-left: 3px solid #dc3545;
+.reservation-info.fin {
+    border-right: 3px solid #f44336;
+}
+.reservation-info.continuation {
+    border-left: none;
+    border-right: none;
+    background-color: #e3f2fd;
+}
+.day {
+    position: relative;
+    min-height: 40px;
 }
 
-.empty-day {
-    background: #f8f9fa;
+
+
+.calendar {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
-.badge {
-    font-size: 10px;
+.calendar th, .calendar td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.calendar th {
+    background-color: #f5f5f5;
+}
+
+.day {
+    height: 80px;
+    vertical-align: top;
+}
+
+.empty {
+    background-color: #f9f9f9;
+}
+
+.reserved {
+    background-color: #e3f2fd;
+}
+
+.reservation-info {
+    font-size: 12px;
+    color: #2196F3;
+    margin-top: 5px;
+    padding: 2px;
+    background-color: rgba(33, 150, 243, 0.1);
+    border-radius: 3px;
+}
+
+.controls {
+    margin-bottom: 20px;
+}
+
+.controls select {
+    margin-right: 10px;
+}
+
+.hotel-info {
+    margin-bottom: 20px;
+    text-align: center;
 }
 </style>
+
     <!-- FIN : header -->
 
     <!--<div class="breadcrumbs">
