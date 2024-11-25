@@ -38,16 +38,13 @@
     </a>
 </li>
 
-                    <h3 class="menu-title">xxxxx</h3><!-- /.menu-title -->
+                    <h3 class="menu-title">Calendrier</h3><!-- /.menu-title -->
 
-                    <li class="dropdown">
-                        <a href="#A VOUS D'ECRIRE LE LIEN"> <i class="menu-icon fa fa-tasks"></i>xxxxx</a>
-                         
-                        
-                    </li>
-                    <li>
-                        <a href="#"> <i class="menu-icon ti-email"></i>xxxxxx</a>
-                    </li>
+                    <li class="menu-item">
+    <a href="index.php?gestion=calendrier" class="dropdown-toggle"> 
+        <i class="menu-icon fa fa-calendar"></i>Calendrier des réservations
+    </a>
+</li>
                    
                 </ul>
             </div><!-- /.navbar-collapse -->

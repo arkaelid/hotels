@@ -1,15 +1,15 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-11-13 16:08:10
+/* Smarty version 4.3.4, created on 2024-11-13 17:54:37
   from 'C:\wamp64\www\hotels\public\left.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_6734ceeaa37bd2_82586867',
+  'unifunc' => 'content_6734e7dde8b683_06945786',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '2abdd714f97826e3c4504c9686c45ab25ffbb387' => 
+    '0ac71f8579296dbdeaa09e0c8ea31ba54586e5a6' => 
     array (
       0 => 'C:\\wamp64\\www\\hotels\\public\\left.tpl',
       1 => 1731513873,
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6734ceeaa37bd2_82586867 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6734e7dde8b683_06945786 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Left Panel -->
 
     <aside id="left-panel" class="left-panel">
